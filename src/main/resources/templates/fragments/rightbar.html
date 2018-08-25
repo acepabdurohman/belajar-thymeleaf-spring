@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Sidebar</title>
+    <div th:replace="fragments/header :: header-css"/>
+
+    <div th:replace="fragments/leftbar :: leftbar-custom-style"/>
+</head>
+<body>
+<div th:fragment="rightbar">
+    <div class="col-sm-2 sidenav" style="height: 450px">
+        <div class="well">
+            <p>ADS 1</p>
+        </div>
+        <div class="well">
+            <p>ADS 2</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

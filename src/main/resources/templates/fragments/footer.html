@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Footer</title>
+    <div th:replace="fragments/header :: header-css"/>
+
+    <div th:fragment="footer-custom-style">
+        <style>
+            /* Set black background color, white text and some padding */
+            footer {
+                background-color: #555;
+                color: white;
+                padding: 15px;
+            }
+        </style>
+    </div>
+</head>
+<body>
+<div th:fragment="footer">
+    <footer class="container-fluid text-center">
+        <p>Belajar Thymeleaf With Spring</p>
+    </footer>
+</div>
+</body>
+</html>

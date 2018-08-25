@@ -24,4 +24,9 @@ public class ProductController {
         List<Product> products = productService.getAll();
         return ResponseEntity.ok(products);
     }
+
+    @GetMapping("/page")
+    public String showProducts(){
+        return "products";
+    }
 }
