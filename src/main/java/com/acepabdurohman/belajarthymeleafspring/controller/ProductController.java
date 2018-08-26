@@ -2,11 +2,13 @@ package com.acepabdurohman.belajarthymeleafspring.controller;
 
 import com.acepabdurohman.belajarthymeleafspring.dto.ProductAddRequest;
 import com.acepabdurohman.belajarthymeleafspring.model.Product;
+import com.acepabdurohman.belajarthymeleafspring.model.User;
 import com.acepabdurohman.belajarthymeleafspring.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,8 +33,10 @@ public class ProductController {
     }
 
     @GetMapping("/page")
-    public String showProducts(){
-        return "products";
+    public ModelAndView showProducts(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("products");
+        return modelAndView;
     }
 
     @GetMapping("/page/type")
