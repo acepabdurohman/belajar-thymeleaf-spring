@@ -7,12 +7,23 @@ function getProducts(){
         type: "GET",
         url: "http://localhost:1111/products",
         success: function(response){
-            var resLeng = response.length
-            console.log(resLeng);
-
+            var i = 1;
             response.forEach(function(data){
-                console.log(data.name);
-            })
+                $("#product-list").append(
+                    "<tr>" +
+                    "<td>" +
+                    i +
+                    "</td>" +
+                    "<td>" +
+                    data.id +
+                    "</td>" +
+                    "<td>" +
+                    data.name +
+                    "</td>" +
+                    "</tr>"
+            );
+                i++;
+            });
         },
         error: function(xhr, status, error){
             var statusCode = xhr.status;
