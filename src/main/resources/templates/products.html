@@ -27,6 +27,10 @@
 
         <div class="col-sm-8 text-left">
             <h1>Data Product</h1>
+            <a th:href="@{/products/page/type?form=addProduct}">
+                <button type="button" class="btn btn-primary">Tambah Data</button>
+            </a>
+
             <p>
                 <table class='table table-bordered table-hover'>
                     <thead>
@@ -40,11 +44,15 @@
                         <td>
                             Product Name
                         </td>
+                        <td>
+                            Price
+                        </td>
+                        <td>
+                            Action
+                        </td>
                     </tr>
                     </thead>
-                    <tbody id="product-list">
-
-                    </tbody>
+                    <tbody id="product-list"/>
                 </table>
             </p>
         </div>

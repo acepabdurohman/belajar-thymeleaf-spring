@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Product Page</title>
+    <div th:replace="fragments/header :: header-css"/>
+
+    <div th:replace="fragments/header :: header-custom-style"/>
+
+    <div th:replace="fragments/leftbar :: leftbar-custom-style"/>
+
+    <div th:replace="fragments/footer :: footer-custom-style"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"/>
+
+    <script src="/js/products-client.js" type="text/javascript"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header">
+
+</div>
+
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div th:replace="fragments/leftbar :: leftbar"/>
+
+        <div class="col-sm-8 text-left">
+            <h1>Input Data Product</h1>
+            <input type="hidden" id="id-product"/>
+            <div class="form-group">
+                <label>Product Name:</label>
+                <input type="text" class="form-control" id="product-name" style="width: 50%"/>
+            </div>
+            <div class="form-group">
+                <label> Product Price:</label>
+                <input type="number" class="form-control" id="product-price" style="width: 50%"/>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Simpan" id="sbmt" class="btn btn-primary"/>
+            </div>
+        </div>
+
+        <div th:replace="fragments/rightbar :: rightbar"/>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>

@@ -1,5 +1,6 @@
 package com.acepabdurohman.belajarthymeleafspring.controller;
 
+import com.acepabdurohman.belajarthymeleafspring.dto.ProductAddRequest;
 import com.acepabdurohman.belajarthymeleafspring.model.Product;
 import com.acepabdurohman.belajarthymeleafspring.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +8,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.servlet.ModelAndView;
+import javax.validation.Valid;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 @Controller
@@ -28,5 +32,42 @@ public class ProductController {
     @GetMapping("/page")
     public String showProducts(){
         return "products";
+    }
+
+    @GetMapping("/page/type")
+    public ModelAndView showAddProduct(@RequestParam("form") String form,
+                                       @RequestParam(value = "id", required = false) String id){
+        ModelAndView modelAndView = new ModelAndView();
+        if (form.equals("addProduct")){
+            modelAndView.setViewName("add-product");
+            return modelAndView;
+        } else {
+            Product currentProduct = productService.findById(Integer.parseInt(id));
+            modelAndView.addObject("product", currentProduct);
+            modelAndView.setViewName("edit-product");
+            return modelAndView;
+        }
+    }
+
+    @PostMapping("")
+    @ResponseBody
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<?> addOrUpdateProduct(@RequestBody @Valid ProductAddRequest request){
+        productService.addOrUpdateProduct(request);
+        try{
+            URI location = new URI("http://localhost:1111/products/page");
+            return ResponseEntity.created(location).build();
+        }catch (URISyntaxException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @DeleteMapping("")
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<?> deleteProductById(@RequestBody String id){
+        productService.delete(Integer.parseInt(id));
+        return ResponseEntity.ok().build();
     }
 }
