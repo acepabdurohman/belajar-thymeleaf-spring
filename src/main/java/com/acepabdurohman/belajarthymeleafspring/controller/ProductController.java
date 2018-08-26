@@ -6,6 +6,7 @@ import com.acepabdurohman.belajarthymeleafspring.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -35,7 +36,8 @@ public class ProductController {
     }
 
     @GetMapping("/page/type")
-    public ModelAndView showAddProduct(@RequestParam("form") String form,
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public ModelAndView showAddUpdateProduct(@RequestParam("form") String form,
                                        @RequestParam(value = "id", required = false) String id){
         ModelAndView modelAndView = new ModelAndView();
         if (form.equals("addProduct")){
@@ -52,6 +54,7 @@ public class ProductController {
     @PostMapping("")
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<?> addOrUpdateProduct(@RequestBody @Valid ProductAddRequest request){
         productService.addOrUpdateProduct(request);
         try{
@@ -66,6 +69,7 @@ public class ProductController {
     @DeleteMapping("")
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<?> deleteProductById(@RequestBody String id){
         productService.delete(Integer.parseInt(id));
         return ResponseEntity.ok().build();

@@ -35,6 +35,10 @@ function addOrUpdateProduct(){
                 400: function () {
                     alert('Inputan tidak boleh kosong');
 
+                },
+                404: function () {
+                    alert('Not Found');
+
                 }
             }
         });
@@ -107,6 +111,9 @@ function deleteData(id){
                 200: function(){
                     alert('Data Berhasil dihapus');
                     location.reload(true);
+                },
+                404: function () {
+                    alert('Not Found');
                 }
             }
         });
