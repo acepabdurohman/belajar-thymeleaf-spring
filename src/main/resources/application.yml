@@ -1,13 +1,8 @@
-server:
-  port: 1111
 spring:
   jpa:
     hibernate:
       ddl-auto: validate
-  datasource:
-    url: jdbc:mysql://localhost:3306/posdb
-    username: root
-    password: admin1234
-    driver-class-name: com.mysql.jdbc.Driver
   thymeleaf:
     cache: false
+  profiles:
+    active: heroku

@@ -1,0 +1,8 @@
+server:
+  port: 1111
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/posdb
+    username: root
+    password: admin1234
+    driver-class-name: com.mysql.jdbc.Driver
