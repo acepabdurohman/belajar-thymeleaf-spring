@@ -11,11 +11,14 @@ function addOrUpdateProduct(){
         var idProduct = document.getElementById("id-product").value;
         var productName = document.getElementById("product-name").value;
         var productPrice = document.getElementById("product-price").value;
+        var productExpire = document.getElementById("product-expire").value;
+        console.log(productExpire);
 
         var obj = {
             "idProduct": idProduct,
             "productName": productName,
-            "productPrice": productPrice
+            "productPrice": productPrice,
+            "productExpire": productExpire
         };
 
         console.log(obj);
@@ -67,6 +70,9 @@ function getProducts(){
                     "</td>" +
                     "<td>" +
                     data.price +
+                    "</td>" +
+                    "<td>" +
+                    data.expireDate +
                     "</td>" +
                     "<td>" +
                     "<a href='/products/page/type?form=editProduct&id="+id+"'>" +

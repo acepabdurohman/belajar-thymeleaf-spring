@@ -6,3 +6,4 @@ spring:
     cache: false
   profiles:
     active: heroku
+    #active: localhost

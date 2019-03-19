@@ -60,14 +60,9 @@ public class ProductController {
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<?> addOrUpdateProduct(@RequestBody @Valid ProductAddRequest request){
+        System.out.println(request);
         productService.addOrUpdateProduct(request);
-        try{
-            URI location = new URI("http://localhost:1111/products/page");
-            return ResponseEntity.created(location).build();
-        }catch (URISyntaxException e){
-            e.printStackTrace();
-        }
-        return null;
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @DeleteMapping("")

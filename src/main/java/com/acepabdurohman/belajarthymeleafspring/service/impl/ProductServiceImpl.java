@@ -32,11 +32,13 @@ public class ProductServiceImpl implements ProductService {
             Product product = new Product();
             product.setName(productAddRequest.getProductName());
             product.setPrice(new BigDecimal(productAddRequest.getProductPrice()));
+            product.setExpireDate(productAddRequest.getProductExpire());
             productRepository.save(product);
         } else {
             Product currentProduct = productRepository.findOne(productAddRequest.getIdProduct());
             currentProduct.setName(productAddRequest.getProductName());
             currentProduct.setPrice(new BigDecimal(productAddRequest.getProductPrice()));
+            currentProduct.setExpireDate(productAddRequest.getProductExpire());
             productRepository.save(currentProduct);
         }
 
