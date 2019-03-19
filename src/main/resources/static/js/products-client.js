@@ -24,7 +24,7 @@ function addOrUpdateProduct(){
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify(obj),
-            url: "http://localhost:1111/products",
+            url: "/products",
             success: function (response) {
 
             },
@@ -49,7 +49,7 @@ function addOrUpdateProduct(){
 function getProducts(){
     $.ajax({
         type: "GET",
-        url: "http://localhost:1111/products",
+        url: "/products",
         success: function(response){
             var i = 1;
             response.forEach(function(data){
@@ -103,7 +103,7 @@ function deleteData(id){
             type: "DELETE",
             dataType: "json",
             data: JSON.stringify(id),
-            url: "http://localhost:1111/products",
+            url: "/products",
             success: function (response) {
 
             },
