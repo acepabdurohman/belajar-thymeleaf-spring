@@ -5,6 +5,6 @@ spring:
   thymeleaf:
     cache: false
   profiles:
-    active: heroku
-    #active: localhost
-    #
+    #active: heroku
+    active: localhost
+    #active: docker

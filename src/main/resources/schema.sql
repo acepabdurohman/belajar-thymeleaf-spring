@@ -25,5 +25,6 @@ create table if not exists t_product (
   id int auto_increment,
   name varchar(100) not null,
   price decimal(10, 2) not null default 0,
+  expire_date date,
   primary key(id)
 );
